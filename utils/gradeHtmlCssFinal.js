@@ -73,8 +73,8 @@ function getPNG(filePath) {
 
   try {
     const referencePNG = await getPNG(referenceImage);
-    const browser = await puppeteer.launch();
-
+    const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
+    
     console.log('REPOS: ', repos)
     for (let repoPath of repos) {
       const diffPercentage = await getDiffPercentage(browser, referencePNG, repoPath);
