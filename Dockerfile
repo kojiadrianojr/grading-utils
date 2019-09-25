@@ -20,8 +20,8 @@ COPY . /grading-utils
 COPY package.json /grading-utils
 RUN npm install
 
-COPY /bin/grade_html_css_final.sh /bin/grade_html_css_final.sh
+COPY /bin/$checker /bin/
 COPY ${reference_image} .
-RUN chmod +x bin/grade_html_css_final.sh
+RUN chmod +x bin/$checker
 
-ENTRYPOINT ./bin/grade_html_css_final.sh
+ENTRYPOINT ./bin/$checker
